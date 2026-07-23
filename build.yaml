@@ -1,25 +1,10 @@
 # This file generates the GitHub Actions matrix
-# For simple board + shield combinations, add them
-# to the top level board and shield arrays, for more
-# control, add individual board + shield combinations to
-# the `include` property.
 #
 ---
 include:
-  # Corne-ish Zen v2 (Most common AliExpress E-Paper Corne)
-  - board: corneish_zen_v2_left
-  - board: corneish_zen_v2_right
-
-  # Corne-ish Zen v1
-  - board: corneish_zen_v1_left
-  - board: corneish_zen_v1_right
-
-  # Standard Corne with nice!nano v2 and nice!view E-Ink display
   - board: nice_nano_v2
     shield: corne_left nice_view_adapter nice_view
   - board: nice_nano_v2
     shield: corne_right nice_view_adapter nice_view
-
-  # Reset firmware target
   - board: nice_nano_v2
     shield: settings_reset
