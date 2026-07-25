@@ -4,10 +4,11 @@
  * Display header:
  *   GND, SDA/MOSI, SCL/SCK, CS, DC, RST, BUSY, VCC
  *
- * Second pin-map hypothesis, based on the physical routing order of the four
- * unused Pro Micro pins nearest the display header:
- *   MOSI=D2/P0.17, SCK=D3/P0.20, CS=D9/P1.06,
- *   DC=D10/P0.09, RST=D16/P0.10, BUSY=D8/P1.04
+ * Pin map used by the Corne-ish Zen v2 hardware definition.  The retained
+ * factory image and this clone's complete GPIO allocation both point to the
+ * clone PCB reusing that design:
+ *   MOSI=P0.17, SCK=P0.20, CS=P0.10,
+ *   DC=P0.09, RST=P1.04, BUSY=P1.06
  *
  * SPDX-License-Identifier: MIT
  */
@@ -39,7 +40,7 @@
     pinctrl-0 = <&corne_epaper_spi_default>;
     pinctrl-1 = <&corne_epaper_spi_sleep>;
     pinctrl-names = "default", "sleep";
-    cs-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
+    cs-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
 
     epd: il0323@0 {
         compatible = "gooddisplay,il0323";
@@ -48,8 +49,8 @@
         height = <128>;
         spi-max-frequency = <4000000>;
         dc-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
-        reset-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
-        busy-gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
+        reset-gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
+        busy-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
         pwr = [03 00 26 26];
         cdi = <0xd2>;
         tcon = <0x22>;
