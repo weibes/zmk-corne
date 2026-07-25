@@ -1,0 +1,16 @@
+/*
+ * Control-map test C:
+ *   CS=D10/P0.09, DC=D9/P1.06, RST=D16/P0.10, BUSY=D8/P1.04
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+&spi0 {
+    cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+};
+
+&epd {
+    dc-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
+    reset-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+    busy-gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
+};

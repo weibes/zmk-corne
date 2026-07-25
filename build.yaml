@@ -11,4 +11,24 @@ include:
     snippet: zmk-usb-logging
     artifact-name: corne_epaper_right_test
   - board: nice_nano_v2
+    shield: corne_left corne_epaper corne_epaper_map_b
+    snippet: zmk-usb-logging
+    artifact-name: corne_epaper_left_map_b
+  - board: nice_nano_v2
+    shield: corne_left corne_epaper corne_epaper_map_c
+    snippet: zmk-usb-logging
+    artifact-name: corne_epaper_left_map_c
+  - board: nice_nano_v2
+    shield: corne_left corne_epaper corne_epaper_map_d
+    snippet: zmk-usb-logging
+    artifact-name: corne_epaper_left_map_d
+  - board: nice_nano_v2
+    shield: corne_left corne_epaper corne_epaper_map_e
+    snippet: zmk-usb-logging
+    artifact-name: corne_epaper_left_map_e
+  - board: nice_nano_v2
+    shield: corne_left corne_epaper corne_epaper_map_f
+    snippet: zmk-usb-logging
+    artifact-name: corne_epaper_left_map_f
+  - board: nice_nano_v2
     shield: settings_reset

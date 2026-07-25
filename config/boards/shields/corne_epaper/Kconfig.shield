@@ -2,3 +2,18 @@
 
 config SHIELD_CORNE_EPAPER
     def_bool $(shields_list_contains,corne_epaper)
+
+config SHIELD_CORNE_EPAPER_MAP_B
+    def_bool $(shields_list_contains,corne_epaper_map_b)
+
+config SHIELD_CORNE_EPAPER_MAP_C
+    def_bool $(shields_list_contains,corne_epaper_map_c)
+
+config SHIELD_CORNE_EPAPER_MAP_D
+    def_bool $(shields_list_contains,corne_epaper_map_d)
+
+config SHIELD_CORNE_EPAPER_MAP_E
+    def_bool $(shields_list_contains,corne_epaper_map_e)
+
+config SHIELD_CORNE_EPAPER_MAP_F
+    def_bool $(shields_list_contains,corne_epaper_map_f)
