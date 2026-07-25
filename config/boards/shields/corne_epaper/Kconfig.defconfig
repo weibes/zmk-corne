@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: MIT
+
+if SHIELD_CORNE_EPAPER
+
+config SPI
+    default y
+
+config IL0323
+    default y
+
+config ZMK_DISPLAY
+    default y
+
+config ZMK_DISPLAY_BLANK_ON_IDLE
+    default n
+
+# The IL0323 driver allocates a temporary buffer while clearing the panel.
+config HEAP_MEM_POOL_SIZE
+    default 1024
+
+config LV_Z_MEM_POOL_SIZE
+    default 4096
+
+choice ZMK_DISPLAY_STATUS_SCREEN
+    default ZMK_DISPLAY_STATUS_SCREEN_BUILT_IN
+endchoice
+
+endif

@@ -1,0 +1,62 @@
+/*
+ * Experimental 80x128 SPI e-paper adapter for the 52840nano Corne clone.
+ *
+ * Display header:
+ *   GND, SDA/MOSI, SCL/SCK, CS, DC, RST, BUSY, VCC
+ *
+ * First pin-map hypothesis:
+ *   MOSI=P0.17, SCK=P0.20, CS=P0.06,
+ *   DC=P0.08, RST=P0.10, BUSY=P0.09
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+&pro_micro_i2c {
+    status = "disabled";
+};
+
+&pinctrl {
+    corne_epaper_spi_default: corne_epaper_spi_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 20)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 17)>;
+        };
+    };
+
+    corne_epaper_spi_sleep: corne_epaper_spi_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 20)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 17)>;
+            low-power-enable;
+        };
+    };
+};
+
+&spi0 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    pinctrl-0 = <&corne_epaper_spi_default>;
+    pinctrl-1 = <&corne_epaper_spi_sleep>;
+    pinctrl-names = "default", "sleep";
+    cs-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+
+    epd: il0323@0 {
+        compatible = "gooddisplay,il0323";
+        reg = <0>;
+        width = <80>;
+        height = <128>;
+        spi-max-frequency = <4000000>;
+        dc-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
+        reset-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+        busy-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+        pwr = [03 00 26 26];
+        cdi = <0xd2>;
+        tcon = <0x22>;
+    };
+};
+
+/ {
+    chosen {
+        zephyr,display = &epd;
+    };
+};
