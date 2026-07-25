@@ -4,11 +4,9 @@
 include:
   - board: nice_nano_v2
     shield: corne_left corne_epaper
-    snippet: zmk-usb-logging
     artifact-name: corne_epaper_left_zen_pinout
   - board: nice_nano_v2
     shield: corne_right corne_epaper
-    snippet: zmk-usb-logging
     artifact-name: corne_epaper_right_zen_pinout
   - board: nice_nano_v2
     shield: settings_reset
